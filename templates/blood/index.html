@@ -5,7 +5,95 @@
 {% endblock %}
 
 {% block content %}
-  <div class="flex items-center justify-center h-screen">
-    <h2 class="text-4xl text-red-700 font-bold">Welcome to the Blood Donation Management System</h2>
+
+<!-- HERO SECTION -->
+<section class="bg-gradient-to-r from-red-600 to-red-500 text-white p-10 mb-12">
+  <div class="max-w-4xl">
+    <h1 class="text-4xl font-extrabold mb-4">
+      Blood Bank Management System
+    </h1>
+    <p class="text-lg text-red-100 mb-6">
+      A reliable platform to manage blood donors, track availability, and save lives efficiently.
+    </p>
+
+    <div class="flex gap-4">
+      <a href="{% url 'register' %}"
+         class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+        Register as Donor
+      </a>
+      <a href="{% url 'donors' %}"
+         class="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition">
+        View Donors
+      </a>
+    </div>
   </div>
+</section>
+
+<!-- SEARCH SECTION -->
+<section class="bg-white rounded-xl shadow p-8 mb-12">
+  <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+    Search Blood Donors
+  </h2>
+
+  <form method="GET" action="{% url 'donors' %}" class="flex flex-col md:flex-row gap-4 justify-center">
+    <select name="q"
+            class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500">
+      <option value="">Select Blood Group</option>
+      <option>A+</option><option>A-</option>
+      <option>B+</option><option>B-</option>
+      <option>AB+</option><option>AB-</option>
+      <option>O+</option><option>O-</option>
+    </select>
+
+    <button type="submit"
+            class="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
+      Search
+    </button>
+  </form>
+</section>
+
+<!-- STATS SECTION -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+  <div class="bg-white rounded-xl shadow p-6 text-center">
+    <p class="text-4xl font-bold text-red-600">100+</p>
+    <p class="text-gray-600 mt-2">Registered Donors</p>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6 text-center">
+    <p class="text-4xl font-bold text-red-600">8</p>
+    <p class="text-gray-600 mt-2">Blood Groups Available</p>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6 text-center">
+    <p class="text-4xl font-bold text-red-600">24/7</p>
+    <p class="text-gray-600 mt-2">Emergency Support</p>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="mb-12">
+  <h2 class="text-2xl font-bold text-center mb-8">Our Services</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <h3 class="font-bold text-lg mb-2">Donor Registration</h3>
+      <p class="text-gray-600 text-sm">
+        Easily register donors with contact details and last donation date.
+      </p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <h3 class="font-bold text-lg mb-2">Availability Tracking</h3>
+      <p class="text-gray-600 text-sm">
+        Automatically calculate donor availability based on donation history.
+      </p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <h3 class="font-bold text-lg mb-2">Quick Search</h3>
+      <p class="text-gray-600 text-sm">
+        Instantly find donors by blood group during emergencies.
+      </p>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

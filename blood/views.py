@@ -33,6 +33,7 @@ def register(request):
     return render(request, 'blood/register.html')
 
 def donors(request): 
+    # query
     query = request.GET.get('q')
     if query:
         donor_list = Donors.objects.filter(
@@ -40,9 +41,20 @@ def donors(request):
             )
     else:
         donor_list = Donors.objects.all()
+
+    # eligible calculation
+    today = date.today()
+    
+    for donor in donor_list:
+        if donor.donation_date:
+            donor.available_date = donor.donation_date + timedelta(days=90)
+            donor.available = today >= donor.available_date
+        else:
+            donor.available = True
+            donor.available_date = None 
         
     context_dict = {
-        'donor': donor_list 
-        'query' = query 
+        'donor': donor_list,
+        'query' : query,
         }
     return render(request, 'blood/donors.html', context_dict) 
