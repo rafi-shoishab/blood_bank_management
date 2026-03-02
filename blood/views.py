@@ -33,11 +33,16 @@ def register(request):
     return render(request, 'blood/register.html')
 
 def donors(request): 
-    donor_list = Donors.objects.all()
-
+    query = request.GET.get('q')
+    if query:
+        donor_list = Donors.objects.filter(
+            blood_group = query
+            )
+    else:
+        donor_list = Donors.objects.all()
+        
     context_dict = {
-        'donor': donor_list,   
-    }
-
-    return render(request, 'blood/donors.html', context_dict)
-
+        'donor': donor_list 
+        'query' = query 
+        }
+    return render(request, 'blood/donors.html', context_dict) 

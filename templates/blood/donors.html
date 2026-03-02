@@ -5,7 +5,21 @@
 
 {% block content %}
   <h2 class="text-2xl font-bold text-red-500 mb-6 text-center">Donor List</h2>
+  <!-- search query -->
+  <select method="GET" name="q" value="{{ request.GET.q }}" class="w-20% border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+    <option value="">Select Blood Group</option>
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+    <option>O+</option>
+    <option>O-</option>
+  </select>
+  <button type="submit" class="bg-red-300 text-black px-6 py-2 rounded hover:bg-red-400">Search</button>
 
+  <!-- Table Content -->
   <div class="overflow-x-auto bg-white rounded-lg shadow p-4">
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-red-500 text-white">
@@ -23,18 +37,22 @@
 
       <tbody class="divide-y divide-gray-200">
         <!-- table rows -->
-        {% for donor in donor %}
-          <tr class="hover:bg-gray-50">
-            <td class="px-4 py-2">{{ donor.id }}</td>
-            <td class="px-4 py-2">{{ donor.donor_name }}</td>
-            <td class="px-4 py-2">+{{ donor.contact }}</td>
-            <td class="px-4 py-2">{{ donor.email }}</td>
-            <td class="px-4 py-2">{{ donor.blood_group }}</td>
-            <td class="px-4 py-2">{{ donor.address }}</td>
-            <td class="px-4 py-2">{{ donor.donation_date }}</td>
-            <td class="px-4 py-2">yes</td>
-          </tr>
-        {% endfor %}
+        {% if donor %}
+          {% for donor in donor %}
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2">{{ donor.id }}</td>
+              <td class="px-4 py-2">{{ donor.donor_name }}</td>
+              <td class="px-4 py-2">+88{{ donor.contact }}</td>
+              <td class="px-4 py-2">{{ donor.email }}</td>
+              <td class="px-4 py-2">{{ donor.blood_group }}</td>
+              <td class="px-4 py-2">{{ donor.address }}</td>
+              <td class="px-4 py-2">{{ donor.donation_date }}</td>
+              <td class="px-4 py-2">yes</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <p>{{ query }} not found</p>
+        {% endif %}
       </tbody>
     </table>
   </div>
