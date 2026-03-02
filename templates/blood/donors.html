@@ -43,8 +43,8 @@ Donor List | Blood Bank
 
     <tbody class="divide-y divide-gray-200">
       <!-- table rows -->
-      {% if donor %} 
-      {% for donor in donor %}
+      {% if donors %} 
+      {% for donor in donors %}
       <tr class="hover:bg-gray-50">
         <td class="px-4 py-2">{{ donor.id }}</td>
         <td class="px-4 py-2">{{ donor.donor_name }}</td>

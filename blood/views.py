@@ -54,7 +54,7 @@ def donors(request):
             donor.available_date = None 
         
     context_dict = {
-        'donor': donor_list,
+        'donors': donor_list,
         'query' : query,
         }
     return render(request, 'blood/donors.html', context_dict) 
