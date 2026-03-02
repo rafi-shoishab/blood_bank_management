@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Register Donor | Blood Bank
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+    <h2 class="text-2xl font-bold text-center text-red-600 mb-6">Register Blood Donor</h2>
+
+    <form method="POST" class="space-y-5">
+      {% csrf_token %}
+
+      <!-- Donor Name -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Full Name</label>
+        <input type="text" name="full_name" required class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Contact Number</label>
+        <input type="text" name="number" required class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Email Address</label>
+        <input type="email" name="mail" class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      </div>
+
+      <!-- Blood Group -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Blood Group</label>
+        <select name="blood_group" required class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+          <option value="">Select Blood Group</option>
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>AB+</option>
+          <option>AB-</option>
+          <option>O+</option>
+          <option>O-</option>
+        </select>
+      </div>
+
+      <!-- Address -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Address</label>
+        <textarea name="location" rows="3" class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+      </div>
+
+      <!-- Last Donation Date -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Last Donation Date</label>
+        <input type="date" name="donation_date" class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center pt-4">
+        <button type="submit" class="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700 transition">Register Donor</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

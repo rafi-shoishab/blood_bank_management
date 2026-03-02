@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Blood Bank
+      {% endblock %}
+    </title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'includes/footer.html' %}
+  </body>
+</html>

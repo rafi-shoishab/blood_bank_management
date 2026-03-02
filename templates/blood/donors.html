@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+  Donor List | Blood Bank
+{% endblock %}
+
+{% block content %}
+  <h2 class="text-2xl font-bold text-red-500 mb-6 text-center">Donor List</h2>
+
+  <div class="overflow-x-auto bg-white rounded-lg shadow p-4">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-red-500 text-white">
+        <tr>
+          <th class="px-4 py-2 text-left">#</th>
+          <th class="px-4 py-2 text-left">Donor Name</th>
+          <th class="px-4 py-2 text-left">Contact</th>
+          <th class="px-4 py-2 text-left">Email</th>
+          <th class="px-4 py-2 text-left">Blood Group</th>
+          <th class="px-4 py-2 text-left">Address</th>
+          <th class="px-4 py-2 text-left">Last Donation</th>
+          <th class="px-4 py-2 text-left">Availability</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <!-- table rows -->
+        {% for donor in donor %}
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2">{{ donor.id }}</td>
+            <td class="px-4 py-2">{{ donor.donor_name }}</td>
+            <td class="px-4 py-2">+{{ donor.contact }}</td>
+            <td class="px-4 py-2">{{ donor.email }}</td>
+            <td class="px-4 py-2">{{ donor.blood_group }}</td>
+            <td class="px-4 py-2">{{ donor.address }}</td>
+            <td class="px-4 py-2">{{ donor.donation_date }}</td>
+            <td class="px-4 py-2">yes</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
